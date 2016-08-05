@@ -5,28 +5,48 @@ import {objectDimensions, entityDimensions} from '../dimensions';
 @inject(BindingEngine)
 export class DimensionsPicker {
 
-  @bindable object; /* either use a simple object */
-  @bindable entity; /* or a simple entity */
+  /* either use a simple object */
+  @bindable object;
 
-  @bindable repository; /* @todo: can also be used to calculate selectableDimensions */
+  /* or a simple entity */
+  @bindable entity;
+
+  /* @todo */
+  @bindable repository;
 
   @bindable
-  selectedDimensions   = [];
+  selectedDimensions = [];
 
+  /* the selected dimensions */
   @bindable({defaultBindingMode: bindingMode.twoWay})
-  dimensions = []; /* the selected dimensions */
+  dimensions = [];
 
   schema               = [];
   selectableDimensions = [];
 
   constructor(bindingEngine) {
-    this.vm = this;
+    this.vm                  = this;
+    this.bindingEngine       = bindingEngine;
+    this.dimensionsObservers = [];
   }
 
   calculateSchema() {
     this.schema = schema.call(this);
     /* could tell what dimensions to pick when initiaties */
     this.selectedDimensions = [{dimension: this.selectableDimensions[0]}];
+  }
+
+  dimensionsChanged() {
+    /* remove the old property observers */
+    this.dimensionsObservers.forEach(dimensionObserver => {
+      dimensionObserver.dispose();
+    });
+
+    /* also observe the dimension property of the objects in the dimensions */
+    this.dimensionsObservers = this.selectedDimensions.map(dimension => {
+      return this.bindingEngine.propertyObserver(dimension, 'dimension')
+        .subscribe(this.selectedDimensionsChanged.bind(this));
+    });
   }
 
   selectedDimensionsChanged() {
@@ -49,23 +69,23 @@ export class DimensionsPicker {
 
 function schema() {
   return [{
-    key: 'selectedDimensions',
-    type: 'collection',
+    key:    'selectedDimensions',
+    type:   'collection',
     schema: [{
-      key: 'dimension',
-      label: false,
-      type: 'select',
+      key:     'dimension',
+      label:   false,
+      type:    'select',
       options: this.selectableDimensions.map(dimension => {
         return {
           value: dimension,
-          name: dimension.label()
+          name:  dimension.label()
         };
       })
     }]
   }, {
-    type: 'actions',
+    type:    'actions',
     actions: [{
-      label: 'add dimension',
+      label:  'add dimension',
       action: () => {
         /* @todo: warn when no dimensions are available */
         this.selectedDimensions = this.selectedDimensions.concat({
@@ -73,7 +93,7 @@ function schema() {
         });
       }
     }, {
-      label: 'remove dimension',
+      label:  'remove dimension',
       action: () => {
         this.selectedDimensions = this.selectedDimensions.slice(0, -1);
       }
