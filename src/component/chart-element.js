@@ -15,12 +15,12 @@ export class ChartElement {
   /* the data to be plotted */
   @bindable data;
 
-  @bindable class;
+  @bindable chart;
 
   /* optional for getting acess to the library specific chart chart use it
    * if you want to alter the options on the chart */
   @bindable({defaultBindingMode: bindingMode.twoWay})
-  chart;
+  instance;
 
   constructor(bindingEngine, element, config) {
     this.bindingEngine = bindingEngine;
@@ -29,32 +29,32 @@ export class ChartElement {
   }
 
   dimensionsChanged(dimensions) {
-    if (this.chart) {
-      this.chart.dimensions = this.dimensions;
-      this.chart.update();
+    if (this.instance) {
+      this.instance.dimensions = this.dimensions;
+      this.instance.update();
     }
   }
 
-  classChanged() {
-    if (typeof this.class !== 'function') {
+  chartChanged() {
+    if (typeof this.chart !== 'function') {
       return;
     }
-    let Chart = this.class;
-    if (this.chart) {
-      this.chart.destroy();
-      delete this.chart;
+    let Chart = this.chart;
+    if (this.instance) {
+      this.instance.destroy();
+      delete this.instance;
     }
-    this.chart            = new Chart();
-    this.chart.data       = this.data;
-    this.chart.element    = this.element;
-    this.chart.dimensions = this.dimensions;
-    this.chart.create();
+    this.instance            = new Chart();
+    this.instance.data       = this.data;
+    this.instance.element    = this.element;
+    this.instance.dimensions = this.dimensions;
+    this.instance.create();
   }
 
   dataChanged(data) {
-    if (this.chart) {
-      this.chart.data = this.data;
-      this.chart.update();
+    if (this.instance) {
+      this.instance.data = this.data;
+      this.instance.update();
     }
   }
 
@@ -69,13 +69,13 @@ export class ChartElement {
   updateChart() {
     let NewChart = this.config.chart({type: this.type, library: this.library});
     /* check if not updating to same chart */
-    if (NewChart !== this.class) {
-      this.class = NewChart;
+    if (NewChart !== this.chart) {
+      this.chart = NewChart;
     }
   }
 
   detached() {
-    this.chart.destroy();
+    this.instance.destroy();
   }
 
 }

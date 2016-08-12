@@ -69,23 +69,23 @@ export class DimensionsPicker {
 
 function schema() {
   return [{
-    key:    'selectedDimensions',
-    type:   'collection',
+    key   : 'selectedDimensions',
+    type  : 'collection',
     schema: [{
-      key:     'dimension',
-      label:   false,
-      type:    'select',
+      key    : 'dimension',
+      label  : false,
+      type   : 'select',
       options: this.selectableDimensions.map(dimension => {
         return {
           value: dimension,
-          name:  dimension.label()
+          name : dimension.label()
         };
       })
     }]
   }, {
-    type:    'actions',
+    type   : 'actions',
     actions: [{
-      label:  'add dimension',
+      label : 'add dimension',
       action: () => {
         /* @todo: warn when no dimensions are available */
         this.selectedDimensions = this.selectedDimensions.concat({
@@ -93,8 +93,9 @@ function schema() {
         });
       }
     }, {
-      label:  'remove dimension',
+      label : 'remove dimension',
       action: () => {
+        /* remove the last dimension */
         this.selectedDimensions = this.selectedDimensions.slice(0, -1);
       }
     }]
