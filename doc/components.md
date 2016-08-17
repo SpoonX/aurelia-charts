@@ -1,12 +1,11 @@
-# Component
+# Components
 
+## `<chart-element>`
 
 Aurelia-charts provies you with one component names `chart-element`. A simple
 example on how you would use it follows.
 
-
 ```html
-
 
   <chart-element
     type="line"
@@ -14,8 +13,6 @@ example on how you would use it follows.
   ></chart-element>
 
 ```
-
-## Bindables
 
 ### {string} type
 
@@ -31,3 +28,35 @@ throughout the application.
 
 An optional bindable that overwrites the library configurations. Handy for when
 you have an exception to the rule-or preffer it over configuration.
+
+## `<dimensions-picker>`
+
+```html
+
+  <dimensions-picker
+    dimensions.bind="dimensions"
+    object.bind="object"
+  ></dimensions-picker>
+
+```
+
+```js
+
+  class ViewModel {
+
+    constructor() {
+      this.dimensions = [];
+
+      this.data = [{
+        name: 'Anna',
+        money: 20,
+      }]
+
+      this.object = this.data[0];
+    }
+
+  }
+
+```
+
+###

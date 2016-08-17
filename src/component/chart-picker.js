@@ -12,7 +12,7 @@ export class ChartPicker {
   chart;
 
   schema = [];
-  
+
   /* charts that are available for the given dimensions */
   charts = [];
 

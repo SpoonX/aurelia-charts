@@ -15,6 +15,9 @@ For you I made a list of features.
 - `<chart-element>` to tell aurelia-charts you want to render a chart somewhere in
   your template. See [component](./component.md) section.
 
+- Standardized way of defining what data should be plotted on what
+  dimension/axes.
+
 - Ability to configure aurelia-charts to tell it what library to use by
   default, or tell it what library to use on a per chart type basis. See the
   [configuration](./configuration.md) section

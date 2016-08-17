@@ -1,15 +1,7 @@
 # aurelia-charts
 
-A standardized way of leveraging multiple frameworks.
-
-Aurelia-charts is not about reinventing the wheel. To be able to customize the
-charts, one is required to read the docs of the chart library being
-implemented.
-
-Aurelia charts standardizes the way charts are used in your projects. It does
-so by letting others define sane defaults. It is still up to you to make sure
-the data received from somewhere is formatted in a way that your preffered
-chart library can use.
+> A standardized way of leveraging multiple chart libraries. It defines sane
+> defaults and enables you to defined the rendering of charts using dimensions.
 
 ## Supported libraries
 
@@ -23,10 +15,11 @@ For this example we will use `aurelia-charts-c3` which basicly wraps the c3 libr
 
 1. `jspm install aurelia-charts aurelia-charts-c3`
 2. .plugin('aurelia-charts') and .plugin('aurelia-charts-c3');
-3. create a model with definitions and data (how to do this depends on the
-   chart library one is using)
-4. `<chart-element settings.bind="vmSettings"
-    type="line"></chart-element>`
+3. define dimensions, data and a chart type on the view model.
+4. `<chart-element dimensions.bind="dimensions" type.bind="type" data.bind="data"`
+
+If you are wondering what [dimensions](doc/dimensions.md) and types are and how
+to define them, don't worry well cover those in other chapters.
 
 ## Documentation
 

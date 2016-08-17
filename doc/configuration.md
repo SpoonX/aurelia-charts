@@ -2,8 +2,6 @@
 
 ```js
 
-  .plugin('aurelia-charts-plotly')
-
   .plugin('aurelia-charts-c3')
 
   .plugin('aurelia-charts', charts => {
@@ -29,7 +27,10 @@
 ```
 
 Aurelia-charts will choose the C3 line chart when choosing to render a line
-chart using the `<chart-element type='line' settings.bind='vmSettings'></chart-element>`
+chart using the `<chart-element type='line' dimensions.bind="dimensions" data.bind="data"></chart-element>`
 
 You can also choose to overwrite the config defaults by setting the `library`
-atribute. You can read more about that in the *component* chapter
+attribute. Or you can pass the aurelia charts chart constructor using the chart
+bindable.
+
+You can read more about that in the *component* chapter.
