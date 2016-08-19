@@ -1,8 +1,9 @@
 import {BindingEngine, inject, bindingMode, bindable, customElement} from 'aurelia-framework';
 import {objectDimensions, entityDimensions} from '../dimensions';
+import {Config} from '../config';
 
 @customElement('dimensions-picker')
-@inject(BindingEngine)
+@inject(BindingEngine, Config)
 export class DimensionsPicker {
 
   /* either use a simple object */
@@ -24,7 +25,8 @@ export class DimensionsPicker {
   schema               = [];
   selectableDimensions = [];
 
-  constructor(bindingEngine) {
+  constructor(bindingEngine, config) {
+    this.config = config;
     this.vm                  = this;
     this.bindingEngine       = bindingEngine;
     this.dimensionsObservers = [];
@@ -65,9 +67,37 @@ export class DimensionsPicker {
     this.calculateSchema();
   }
 
+  maxDimensions() {
+    /* get an array of all the registered scales */
+    let scales = flatten(this.config.scales.map(def => def.scales));
+
+    return scales.reduce((max, scale) => {
+      return Math.max(max, scale.length);
+    }, 0);
+  }
+
 }
 
 function schema() {
+  const addAction = {
+    label : 'add dimension',
+    action: () => {
+      /* @todo: warn when no dimensions are available */
+      this.selectedDimensions = this.selectedDimensions.concat({
+        dimension: this.selectableDimensions[0]
+      });
+    }
+  };
+
+  const removeAction = {
+    label : 'remove dimension',
+    action: () => {
+      /* remove the last dimension */
+      this.selectedDimensions = this.selectedDimensions.slice(0, -1);
+    }
+  };
+
+
   return [{
     key   : 'selectedDimensions',
     type  : 'collection',
@@ -83,21 +113,32 @@ function schema() {
       })
     }]
   }, {
-    type   : 'actions',
-    actions: [{
-      label : 'add dimension',
-      action: () => {
-        /* @todo: warn when no dimensions are available */
-        this.selectedDimensions = this.selectedDimensions.concat({
-          dimension: this.selectableDimensions[0]
-        });
+    type: 'conditional',
+    observe: 'selectedDimensions',
+    schema: () => {
+      let actions = [];
+
+      if (this.selectedDimensions.length >= this.maxDimensions()) {
+        actions.push(removeAction);
       }
-    }, {
-      label : 'remove dimension',
-      action: () => {
-        /* remove the last dimension */
-        this.selectedDimensions = this.selectedDimensions.slice(0, -1);
+
+      if (this.selectedDimensions.length < this.maxDimensions()) {
+        actions.push(addAction);
       }
-    }]
+
+      return [{
+        type   : 'actions',
+        actions: actions
+      }];
+    }
   }];
+}
+
+/**
+ * flattens an array once
+ */
+function flatten(arrays) {
+  return arrays.reduce((flattened, array) => {
+    return flattened.concat(array);
+  }, []);
 }
