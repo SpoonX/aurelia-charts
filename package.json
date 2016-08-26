@@ -70,14 +70,17 @@
     "dependencies": {
       "array-equal": "^1.0.0",
       "aurelia-dependency-injection": "^1.0.0-rc.1.0.1",
-      "aurelia-form": "^0.1.8",
+      "aurelia-form": "github:spoonx/aurelia-form@0.1.11",
       "aurelia-framework": "^1.0.1",
       "aurelia-logging": "^1.0.0-rc.1.0.0",
       "extend": "^3.0.0",
       "typer": "^1.1.0"
     },
     "devDependencies": {
-      "aurelia-polyfills": "^1.0.0-beta.1.1.0"
+      "aurelia-polyfills": "^1.0.0-beta.1.1.0",
+      "babel": "babel-core@^5.8.24",
+      "babel-runtime": "^5.8.24",
+      "core-js": "^1.1.4"
     }
   }
 }
