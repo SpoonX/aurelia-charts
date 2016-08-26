@@ -61,6 +61,7 @@
     "yargs": "^4.7.1"
   },
   "jspm": {
+    "jspmPackage": true,
     "registry": "npm",
     "main": "index",
     "format": "amd",
