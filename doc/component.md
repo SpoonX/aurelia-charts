@@ -7,7 +7,6 @@ example on how you would use it follows.
 
 ```html
 
-
   <chart-element
     type="line"
     settings="{data: [] ....}"
