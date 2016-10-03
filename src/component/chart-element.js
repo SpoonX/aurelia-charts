@@ -26,6 +26,11 @@ export class ChartElement {
     this.bindingEngine = bindingEngine;
     this.element       = element;
     this.config        = config;
+    this.style();
+  }
+
+  style() {
+    this.element.style.display = 'block';
   }
 
   dimensionsChanged(dimensions) {
