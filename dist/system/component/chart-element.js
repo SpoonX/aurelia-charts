@@ -3,7 +3,7 @@
 System.register(['aurelia-framework', '../config'], function (_export, _context) {
   "use strict";
 
-  var BindingEngine, bindingMode, inject, bindable, customElement, Config, _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, ChartElement;
+  var TaskQueue, BindingEngine, bindingMode, inject, bindable, customElement, Config, _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, ChartElement;
 
   function _initDefineProp(target, property, descriptor, context) {
     if (!descriptor) return;
@@ -56,6 +56,7 @@ System.register(['aurelia-framework', '../config'], function (_export, _context)
 
   return {
     setters: [function (_aureliaFramework) {
+      TaskQueue = _aureliaFramework.TaskQueue;
       BindingEngine = _aureliaFramework.BindingEngine;
       bindingMode = _aureliaFramework.bindingMode;
       inject = _aureliaFramework.inject;
@@ -65,8 +66,8 @@ System.register(['aurelia-framework', '../config'], function (_export, _context)
       Config = _config.Config;
     }],
     execute: function () {
-      _export('ChartElement', ChartElement = (_dec = customElement('chart-element'), _dec2 = inject(BindingEngine, Element, Config), _dec3 = bindable({ defaultBindingMode: bindingMode.twoWay }), _dec(_class = _dec2(_class = (_class2 = function () {
-        function ChartElement(bindingEngine, element, config) {
+      _export('ChartElement', ChartElement = (_dec = customElement('chart-element'), _dec2 = inject(BindingEngine, Element, Config, TaskQueue), _dec3 = bindable({ defaultBindingMode: bindingMode.twoWay }), _dec(_class = _dec2(_class = (_class2 = function () {
+        function ChartElement(bindingEngine, element, config, queue) {
           _classCallCheck(this, ChartElement);
 
           _initDefineProp(this, 'type', _descriptor, this);
@@ -84,7 +85,13 @@ System.register(['aurelia-framework', '../config'], function (_export, _context)
           this.bindingEngine = bindingEngine;
           this.element = element;
           this.config = config;
+          this.queue = queue;
+          this.style();
         }
+
+        ChartElement.prototype.style = function style() {
+          this.element.style.display = 'block';
+        };
 
         ChartElement.prototype.dimensionsChanged = function dimensionsChanged(dimensions) {
           if (this.instance) {
@@ -106,7 +113,8 @@ System.register(['aurelia-framework', '../config'], function (_export, _context)
           this.instance.data = this.data;
           this.instance.element = this.element;
           this.instance.dimensions = this.dimensions;
-          this.instance.create();
+
+          this.queue.queueTask(this.instance.create.bind(this.instance));
         };
 
         ChartElement.prototype.dataChanged = function dataChanged(data) {

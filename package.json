@@ -1,6 +1,6 @@
 {
   "name": "aurelia-charts",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Aurelia chart framework",
   "keywords": [
     "aurelia",
@@ -9,7 +9,7 @@
   ],
   "homepage": "http://aurelia.io",
   "bugs": {
-    "url": "https://github.com/aurelia/aurelia-charts/issues"
+    "url": "https://github.com/SpoonX/aurelia-charts/issues"
   },
   "license": "CC0-1.0",
   "author": "SpoonX",
@@ -22,7 +22,7 @@
   "main": "dist/commonjs/aurelia-charts.js",
   "repository": {
     "type": "git",
-    "url": "http://github.com/aurelia/aurelia-charts"
+    "url": "http://github.com/SpoonX/aurelia-charts"
   },
   "devDependencies": {
     "aurelia-tools": "^0.2.3",
@@ -62,7 +62,7 @@
   },
   "jspm": {
     "registry": "npm",
-    "main": "index",
+    "main": "aurelia-charts",
     "format": "amd",
     "directories": {
       "dist": "dist/amd"
