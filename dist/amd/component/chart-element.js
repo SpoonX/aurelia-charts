@@ -57,8 +57,8 @@ define(['exports', 'aurelia-framework', '../config'], function (exports, _aureli
 
   var _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6;
 
-  var ChartElement = exports.ChartElement = (_dec = (0, _aureliaFramework.customElement)('chart-element'), _dec2 = (0, _aureliaFramework.inject)(_aureliaFramework.BindingEngine, Element, _config.Config), _dec3 = (0, _aureliaFramework.bindable)({ defaultBindingMode: _aureliaFramework.bindingMode.twoWay }), _dec(_class = _dec2(_class = (_class2 = function () {
-    function ChartElement(bindingEngine, element, config) {
+  var ChartElement = exports.ChartElement = (_dec = (0, _aureliaFramework.customElement)('chart-element'), _dec2 = (0, _aureliaFramework.inject)(_aureliaFramework.BindingEngine, Element, _config.Config, _aureliaFramework.TaskQueue), _dec3 = (0, _aureliaFramework.bindable)({ defaultBindingMode: _aureliaFramework.bindingMode.twoWay }), _dec(_class = _dec2(_class = (_class2 = function () {
+    function ChartElement(bindingEngine, element, config, queue) {
       _classCallCheck(this, ChartElement);
 
       _initDefineProp(this, 'type', _descriptor, this);
@@ -76,7 +76,13 @@ define(['exports', 'aurelia-framework', '../config'], function (exports, _aureli
       this.bindingEngine = bindingEngine;
       this.element = element;
       this.config = config;
+      this.queue = queue;
+      this.style();
     }
+
+    ChartElement.prototype.style = function style() {
+      this.element.style.display = 'block';
+    };
 
     ChartElement.prototype.dimensionsChanged = function dimensionsChanged(dimensions) {
       if (this.instance) {
@@ -98,7 +104,8 @@ define(['exports', 'aurelia-framework', '../config'], function (exports, _aureli
       this.instance.data = this.data;
       this.instance.element = this.element;
       this.instance.dimensions = this.dimensions;
-      this.instance.create();
+
+      this.queue.queueTask(this.instance.create.bind(this.instance));
     };
 
     ChartElement.prototype.dataChanged = function dataChanged(data) {

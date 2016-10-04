@@ -43,12 +43,12 @@ function _initializerWarningHelper(descriptor, context) {
   throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
 }
 
-import { BindingEngine, bindingMode, inject, bindable, customElement } from 'aurelia-framework';
+import { TaskQueue, BindingEngine, bindingMode, inject, bindable, customElement } from 'aurelia-framework';
 import { Config } from '../config';
 
-export let ChartElement = (_dec = customElement('chart-element'), _dec2 = inject(BindingEngine, Element, Config), _dec3 = bindable({ defaultBindingMode: bindingMode.twoWay }), _dec(_class = _dec2(_class = (_class2 = class ChartElement {
+export let ChartElement = (_dec = customElement('chart-element'), _dec2 = inject(BindingEngine, Element, Config, TaskQueue), _dec3 = bindable({ defaultBindingMode: bindingMode.twoWay }), _dec(_class = _dec2(_class = (_class2 = class ChartElement {
 
-  constructor(bindingEngine, element, config) {
+  constructor(bindingEngine, element, config, queue) {
     _initDefineProp(this, 'type', _descriptor, this);
 
     _initDefineProp(this, 'library', _descriptor2, this);
@@ -64,6 +64,12 @@ export let ChartElement = (_dec = customElement('chart-element'), _dec2 = inject
     this.bindingEngine = bindingEngine;
     this.element = element;
     this.config = config;
+    this.queue = queue;
+    this.style();
+  }
+
+  style() {
+    this.element.style.display = 'block';
   }
 
   dimensionsChanged(dimensions) {
@@ -86,7 +92,8 @@ export let ChartElement = (_dec = customElement('chart-element'), _dec2 = inject
     this.instance.data = this.data;
     this.instance.element = this.element;
     this.instance.dimensions = this.dimensions;
-    this.instance.create();
+
+    this.queue.queueTask(this.instance.create.bind(this.instance));
   }
 
   dataChanged(data) {

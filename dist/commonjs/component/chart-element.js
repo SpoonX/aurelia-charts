@@ -56,8 +56,8 @@ function _initializerWarningHelper(descriptor, context) {
   throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
 }
 
-var ChartElement = exports.ChartElement = (_dec = (0, _aureliaFramework.customElement)('chart-element'), _dec2 = (0, _aureliaFramework.inject)(_aureliaFramework.BindingEngine, Element, _config.Config), _dec3 = (0, _aureliaFramework.bindable)({ defaultBindingMode: _aureliaFramework.bindingMode.twoWay }), _dec(_class = _dec2(_class = (_class2 = function () {
-  function ChartElement(bindingEngine, element, config) {
+var ChartElement = exports.ChartElement = (_dec = (0, _aureliaFramework.customElement)('chart-element'), _dec2 = (0, _aureliaFramework.inject)(_aureliaFramework.BindingEngine, Element, _config.Config, _aureliaFramework.TaskQueue), _dec3 = (0, _aureliaFramework.bindable)({ defaultBindingMode: _aureliaFramework.bindingMode.twoWay }), _dec(_class = _dec2(_class = (_class2 = function () {
+  function ChartElement(bindingEngine, element, config, queue) {
     _classCallCheck(this, ChartElement);
 
     _initDefineProp(this, 'type', _descriptor, this);
@@ -75,7 +75,13 @@ var ChartElement = exports.ChartElement = (_dec = (0, _aureliaFramework.customEl
     this.bindingEngine = bindingEngine;
     this.element = element;
     this.config = config;
+    this.queue = queue;
+    this.style();
   }
+
+  ChartElement.prototype.style = function style() {
+    this.element.style.display = 'block';
+  };
 
   ChartElement.prototype.dimensionsChanged = function dimensionsChanged(dimensions) {
     if (this.instance) {
@@ -97,7 +103,8 @@ var ChartElement = exports.ChartElement = (_dec = (0, _aureliaFramework.customEl
     this.instance.data = this.data;
     this.instance.element = this.element;
     this.instance.dimensions = this.dimensions;
-    this.instance.create();
+
+    this.queue.queueTask(this.instance.create.bind(this.instance));
   };
 
   ChartElement.prototype.dataChanged = function dataChanged(data) {

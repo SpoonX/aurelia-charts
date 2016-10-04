@@ -1,8 +1,8 @@
-import {BindingEngine, bindingMode, inject, bindable, customElement} from 'aurelia-framework';
+import {TaskQueue, BindingEngine, bindingMode, inject, bindable, customElement} from 'aurelia-framework';
 import {Config} from '../config';
 
 @customElement('chart-element')
-@inject(BindingEngine, Element, Config)
+@inject(BindingEngine, Element, Config, TaskQueue)
 export class ChartElement {
 
   /* used to determine what chart to use */
@@ -22,10 +22,16 @@ export class ChartElement {
   @bindable({defaultBindingMode: bindingMode.twoWay})
   instance;
 
-  constructor(bindingEngine, element, config) {
+  constructor(bindingEngine, element, config, queue) {
     this.bindingEngine = bindingEngine;
     this.element       = element;
     this.config        = config;
+    this.queue         = queue;
+    this.style();
+  }
+
+  style() {
+    this.element.style.display = 'block';
   }
 
   dimensionsChanged(dimensions) {
@@ -48,7 +54,8 @@ export class ChartElement {
     this.instance.data       = this.data;
     this.instance.element    = this.element;
     this.instance.dimensions = this.dimensions;
-    this.instance.create();
+
+    this.queue.queueTask(this.instance.create.bind(this.instance));
   }
 
   dataChanged(data) {
