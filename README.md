@@ -1,4 +1,4 @@
-# aurelia-charts
+# ![aurelia-charts](https://cloud.githubusercontent.com/assets/67802/19197297/50f1d8a2-8cb9-11e6-980a-d342be79a502.png)
 
 A standardized way of leveraging multiple frameworks.
 
