@@ -77,7 +77,11 @@
   },
   "aurelia": {
     "build": {
-      "resources": []
+      "resources": [
+        "component/chart-element",
+        "component/chart-picker.",
+        "component/dimensions-picker"
+      ]
     }
   }
 }
