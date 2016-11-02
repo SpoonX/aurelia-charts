@@ -19,7 +19,7 @@ supported libraries in the [libraries](doc/libraries.md) section.
 
 ## Quick start
 
-For this example we will use `aurelia-charts-c3` which basicly wraps the c3 library.
+For this example we will use `aurelia-charts-c3` which basically wraps the c3 library.
 
 1. `jspm install aurelia-charts aurelia-charts-c3`
 2. .plugin('aurelia-charts') and .plugin('aurelia-charts-c3');

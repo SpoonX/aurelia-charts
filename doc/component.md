@@ -1,7 +1,7 @@
 # Component
 
 
-Aurelia-charts provies you with one component names `chart-element`. A simple
+Aurelia-charts provides you with one component names `chart-element`. A simple
 example on how you would use it follows.
 
 
@@ -28,5 +28,5 @@ throughout the application.
 
 ### {string} [library]
 
-An optional bindable that overwrites the library configurations. Handy for when
-you have an exception to the rule-or preffer it over configuration.
+An optional bindable that overwrites the library configurations. Handy when
+you have an exception to the rule or prefer it over configuration.

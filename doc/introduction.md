@@ -1,6 +1,6 @@
 # Introduction
 
-You are propably reading this because you want to implement charts in your
+You are probably reading this because you want to implement charts in your
 aurelia project. It is often the case that part of the service businesses
 provide are statistics. Visualizing those statistics is often a requirement.
 

@@ -79,16 +79,16 @@ usefull to consider this quantative, by rating the options with a number.
 
 1. strongly disagree
 2. disagree
-3. ambivelant
+3. ambivalent
 4. agree
 5. strongly agree
 
-The level of agreement increases. `strongly agree` is greater then `agee`. We
-can now plot this data as if it was quantative.
+The level of agreement increases. `strongly agree` is greater then `agree`. We
+can now plot this data as if it was quantitative.
 
-What really matters when plotting graphs is knowing if something is qualatative
-or quantative. A pie chart for example cannot plot occurences(quantative) over
-time(quantative). It can plot occerences(quantative) per category(qualatative).
+What really matters when plotting graphs is knowing if something is qualitative
+or quantitative. A pie chart for example cannot plot occurrences(quantitative) over
+time(quantitative). It can plot occurrences(quantitative) per category(qualitative).
 
 By providing this data with your graph aurelia-charts is able to supply you
 with the valid graphs to render the data you want.
