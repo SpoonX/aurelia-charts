@@ -17,7 +17,7 @@ export function entityDimensions(entity) {
       label: datum => {
         return datum ? `${datum.key}${key}` : `${key}`;
       },
-      data:  prop(key),
+      data : prop(key),
       scale: typeScale(types[key])
     };
   });
@@ -36,7 +36,7 @@ export function objectDimensions(object) {
       label: datum => {
         return datum ? `${datum.key}${key}` : `${key}`;
       },
-      data:  prop(key),
+      data : prop(key),
       scale: typeScale(typer.detect(object[key]))
     };
   });

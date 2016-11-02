@@ -46,6 +46,7 @@ export class ChartElement {
       return;
     }
     let Chart = this.chart;
+
     if (this.instance) {
       this.instance.destroy();
       delete this.instance;
@@ -76,6 +77,7 @@ export class ChartElement {
   updateChart() {
     let NewChart = this.config.chart({type: this.type, library: this.library});
     /* check if not updating to same chart */
+
     if (NewChart !== this.chart) {
       this.chart = NewChart;
     }
