@@ -1,2 +1,6 @@
-jspm_packages
 node_modules
+jspm_packages
+bower_components
+.idea
+.DS_STORE
+build/reports
