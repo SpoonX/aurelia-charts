@@ -73,7 +73,7 @@ describe('Config', () => {
     config.registerScales('c', [quan, qual]);
 
     expect(
-      config.chartsByScale([quan, quan])
+      config.chartsByScale(quan, quan)
     ).toEqual([target]);
   });
 });
