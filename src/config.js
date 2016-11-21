@@ -10,8 +10,8 @@ import {logger}    from './aurelia-charts';
 export class Config {
 
   defaults = {
-    library: undefined,
-    type: 'line',
+    library  : undefined,
+    type     : 'line',
     libraries: {}
   };
 
@@ -46,7 +46,7 @@ export class Config {
   registerScales(target, ...scales) {
     this.scales.push({
       constructor: target,
-      scales: scales
+      scales     : scales
     });
 
     return this;
@@ -103,8 +103,8 @@ export class Config {
 
     if (typeof value === 'string') {
       return this.chart({
-        library : undefined,
-        type    : value
+        library: undefined,
+        type   : value
       });
     }
 
@@ -114,7 +114,7 @@ export class Config {
       let library = this.charts[libName];
 
       if (typeof library === 'undefined') {
-        logger.warn(`${value.library} is not a registered library. Either define a defalt library or tell what library to use`);
+        logger.warn(`${value.library} is not a registered library. Either define a default library or tell what library to use`);
 
         return undefined;
       }

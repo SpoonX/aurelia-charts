@@ -12,7 +12,7 @@ export class ChartPicker {
   chart;
 
   schema = [];
-  
+
   /* charts that are available for the given dimensions */
   charts = [];
 
@@ -23,6 +23,7 @@ export class ChartPicker {
 
   dimensionsChanged(dimensions) {
     const scales = dimensions.map(dimension => dimension.scale);
+
     this.charts  = this.chartConfig.chartsByScale(...scales);
     this.schema  = [{
       key    : 'chart',

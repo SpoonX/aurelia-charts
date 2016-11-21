@@ -97,7 +97,6 @@ function schema() {
     }
   };
 
-
   return [{
     key   : 'selectedDimensions',
     type  : 'collection',
@@ -113,9 +112,9 @@ function schema() {
       })
     }]
   }, {
-    type: 'conditional',
+    type   : 'conditional',
     observe: 'selectedDimensions',
-    schema: () => {
+    schema : () => {
       let actions = [];
 
       if (this.selectedDimensions.length >= this.maxDimensions()) {

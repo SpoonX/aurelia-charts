@@ -1,0 +1,29 @@
+{
+  "name": "aurelia-charts",
+  "version": "0.1.1",
+  "description": "Aurelia chart framework",
+  "keywords": [
+    "spoonx",
+    "aurelia",
+    "plugin",
+    "charts"
+  ],
+  "homepage": "https://github.com/SpoonX/aurelia-charts",
+  "main": "dist/commonjs/aurelia-charts.js",
+  "moduleType": "node",
+  "license": "MIT",
+  "author": "SpoonX <info@spoonx.nl>",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/SpoonX/aurelia-charts"
+  },
+  "dependencies": {
+    "array-equal": "^1.0.0",
+    "aurelia-dependency-injection": "^1.0.0",
+    "aurelia-form": "^0.3.0",
+    "aurelia-framework": "^1.0.1",
+    "aurelia-logging": "^1.0.0",
+    "extend": "^3.0.0",
+    "typer": "^1.1.0"
+  }
+}
