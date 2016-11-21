@@ -37,7 +37,7 @@ export class ChartElement {
   dimensionsChanged(dimensions) {
     if (this.instance) {
       this.instance.dimensions = this.dimensions;
-      this.instance.update();
+      this.instance.update(this.data, this.data);
     }
   }
 
@@ -58,10 +58,10 @@ export class ChartElement {
     this.queue.queueTask(this.instance.create.bind(this.instance));
   }
 
-  dataChanged(data) {
+  dataChanged(newData, oldData) {
     if (this.instance) {
       this.instance.data = this.data;
-      this.instance.update();
+      this.instance.update(newData, oldData);
     }
   }
 
