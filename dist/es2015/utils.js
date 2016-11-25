@@ -74,6 +74,7 @@ export function groupBy(key, objects) {
 export function reduceByX(columns) {
   return columns[0].reduce((acc, val, index) => {
     const vals = row(index, columns);
+
     acc[val] = acc[val] ? acc[val].concat(vals) : vals;
 
     return acc;

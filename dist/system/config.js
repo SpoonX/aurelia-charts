@@ -5,11 +5,7 @@ System.register(['array-equal', 'extend', './aurelia-charts'], function (_export
 
   var arrayEquals, extend, logger, _typeof, Config;
 
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
+  
 
   return {
     setters: [function (_arrayEqual) {
@@ -23,12 +19,12 @@ System.register(['array-equal', 'extend', './aurelia-charts'], function (_export
       _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
         return typeof obj;
       } : function (obj) {
-        return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj;
+        return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
       };
 
       _export('Config', Config = function () {
         function Config() {
-          _classCallCheck(this, Config);
+          
 
           this.defaults = {
             library: undefined,
@@ -102,7 +98,7 @@ System.register(['array-equal', 'extend', './aurelia-charts'], function (_export
             var library = this.charts[libName];
 
             if (typeof library === 'undefined') {
-              logger.warn(value.library + ' is not a registered library. Either define a defalt library or tell what library to use');
+              logger.warn(value.library + ' is not a registered library. Either define a default library or tell what library to use');
 
               return undefined;
             }

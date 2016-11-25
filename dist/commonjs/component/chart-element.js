@@ -21,7 +21,7 @@ function _initDefineProp(target, property, descriptor, context) {
   });
 }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 
 function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
   var desc = {};
@@ -58,7 +58,7 @@ function _initializerWarningHelper(descriptor, context) {
 
 var ChartElement = exports.ChartElement = (_dec = (0, _aureliaFramework.customElement)('chart-element'), _dec2 = (0, _aureliaFramework.inject)(_aureliaFramework.BindingEngine, Element, _config.Config, _aureliaFramework.TaskQueue), _dec3 = (0, _aureliaFramework.bindable)({ defaultBindingMode: _aureliaFramework.bindingMode.twoWay }), _dec(_class = _dec2(_class = (_class2 = function () {
   function ChartElement(bindingEngine, element, config, queue) {
-    _classCallCheck(this, ChartElement);
+    
 
     _initDefineProp(this, 'type', _descriptor, this);
 
@@ -86,7 +86,7 @@ var ChartElement = exports.ChartElement = (_dec = (0, _aureliaFramework.customEl
   ChartElement.prototype.dimensionsChanged = function dimensionsChanged(dimensions) {
     if (this.instance) {
       this.instance.dimensions = this.dimensions;
-      this.instance.update();
+      this.instance.update(this.data, this.data);
     }
   };
 
@@ -95,6 +95,7 @@ var ChartElement = exports.ChartElement = (_dec = (0, _aureliaFramework.customEl
       return;
     }
     var Chart = this.chart;
+
     if (this.instance) {
       this.instance.destroy();
       delete this.instance;
@@ -107,10 +108,10 @@ var ChartElement = exports.ChartElement = (_dec = (0, _aureliaFramework.customEl
     this.queue.queueTask(this.instance.create.bind(this.instance));
   };
 
-  ChartElement.prototype.dataChanged = function dataChanged(data) {
+  ChartElement.prototype.dataChanged = function dataChanged(newData, oldData) {
     if (this.instance) {
       this.instance.data = this.data;
-      this.instance.update();
+      this.instance.update(newData, oldData);
     }
   };
 
@@ -124,6 +125,7 @@ var ChartElement = exports.ChartElement = (_dec = (0, _aureliaFramework.customEl
 
   ChartElement.prototype.updateChart = function updateChart() {
     var NewChart = this.config.chart({ type: this.type, library: this.library });
+
 
     if (NewChart !== this.chart) {
       this.chart = NewChart;

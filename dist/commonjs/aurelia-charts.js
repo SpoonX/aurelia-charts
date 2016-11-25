@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.quan = exports.qual = exports.logger = exports.Config = exports.scales = exports.chart = exports.Chart = undefined;
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var _chart = require('./chart');
 
@@ -37,7 +37,7 @@ Object.defineProperty(exports, 'scales', {
 var _utils = require('./utils');
 
 Object.keys(_utils).forEach(function (key) {
-  if (key === "default") return;
+  if (key === "default" || key === "__esModule") return;
   Object.defineProperty(exports, key, {
     enumerable: true,
     get: function get() {
@@ -46,7 +46,6 @@ Object.keys(_utils).forEach(function (key) {
   });
 });
 exports.configure = configure;
-exports.isObject = isObject;
 
 var _config = require('./config');
 
@@ -60,13 +59,13 @@ function configure(aurelia, chartsConfig) {
   var config = aurelia.container.get(_config.Config);
   var libraries = Object.keys(config.charts);
 
-  if (isObject(chartsConfig)) {
+  if ((typeof chartsConfig === 'undefined' ? 'undefined' : _typeof(chartsConfig)) === 'object') {
     config.configure(chartsConfig);
   } else if (typeof chartsConfig === 'function') {
     chartsConfig(config);
-  } else if (!chartsConfig) {} else if (chartsConfig) {
-      logger.warn('chart configurations can be a function or an object not ' + chartsConfig);
-    }
+  } else if (chartsConfig) {
+    logger.warn('chart configurations can be a function or an object not a ' + (typeof chartsConfig === 'undefined' ? 'undefined' : _typeof(chartsConfig)) + ' value');
+  }
 
   if (libraries.length === 0) {
     logger.warn('no aurelia-charts plugins installed. Head to the docs and read');
@@ -82,6 +81,3 @@ exports.Config = _config.Config;
 exports.logger = logger;
 exports.qual = qual;
 exports.quan = quan;
-function isObject(value) {
-  return (typeof value === 'undefined' ? 'undefined' : _typeof(value)) === 'object' && value !== null;
-}

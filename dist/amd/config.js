@@ -19,18 +19,14 @@ define(['exports', 'array-equal', 'extend', './aurelia-charts'], function (expor
   var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
     return typeof obj;
   } : function (obj) {
-    return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj;
+    return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
   };
 
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
+  
 
   var Config = exports.Config = function () {
     function Config() {
-      _classCallCheck(this, Config);
+      
 
       this.defaults = {
         library: undefined,
@@ -104,7 +100,7 @@ define(['exports', 'array-equal', 'extend', './aurelia-charts'], function (expor
         var library = this.charts[libName];
 
         if (typeof library === 'undefined') {
-          _aureliaCharts.logger.warn(value.library + ' is not a registered library. Either define a defalt library or tell what library to use');
+          _aureliaCharts.logger.warn(value.library + ' is not a registered library. Either define a default library or tell what library to use');
 
           return undefined;
         }

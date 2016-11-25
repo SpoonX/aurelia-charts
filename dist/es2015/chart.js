@@ -11,7 +11,7 @@ export let Chart = class Chart {
     warn('create');
   }
 
-  update() {
+  update(oldData, newData) {
     warn('update');
   }
 

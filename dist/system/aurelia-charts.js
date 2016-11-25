@@ -5,6 +5,29 @@ System.register(['./config', 'aurelia-logging', './chart', './decorator/chart', 
 
   var Config, getLogger, _typeof, logger, qual, quan;
 
+  function configure(aurelia, chartsConfig) {
+    aurelia.globalResources('./component/chart-element', './component/dimensions-picker', './component/chart-picker');
+
+    var config = aurelia.container.get(Config);
+    var libraries = Object.keys(config.charts);
+
+    if ((typeof chartsConfig === 'undefined' ? 'undefined' : _typeof(chartsConfig)) === 'object') {
+      config.configure(chartsConfig);
+    } else if (typeof chartsConfig === 'function') {
+      chartsConfig(config);
+    } else if (chartsConfig) {
+      logger.warn('chart configurations can be a function or an object not a ' + (typeof chartsConfig === 'undefined' ? 'undefined' : _typeof(chartsConfig)) + ' value');
+    }
+
+    if (libraries.length === 0) {
+      logger.warn('no aurelia-charts plugins installed. Head to the docs and read');
+    } else {
+      logger.debug('installed ' + libraries.join(' and ') + ' as aurelia-charts libraries');
+    }
+  }
+
+  _export('configure', configure);
+
   return {
     setters: [function (_config) {
       Config = _config.Config;
@@ -29,7 +52,7 @@ System.register(['./config', 'aurelia-logging', './chart', './decorator/chart', 
       var _exportObj4 = {};
 
       for (var _key in _utils) {
-        if (_key !== "default") _exportObj4[_key] = _utils[_key];
+        if (_key !== "default" && _key !== "__esModule") _exportObj4[_key] = _utils[_key];
       }
 
       _export(_exportObj4);
@@ -38,33 +61,10 @@ System.register(['./config', 'aurelia-logging', './chart', './decorator/chart', 
       _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
         return typeof obj;
       } : function (obj) {
-        return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj;
+        return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
       };
 
       _export('logger', logger = getLogger('aurelia-charts'));
-
-      function configure(aurelia, chartsConfig) {
-        aurelia.globalResources('./component/chart-element', './component/dimensions-picker', './component/chart-picker');
-
-        var config = aurelia.container.get(Config);
-        var libraries = Object.keys(config.charts);
-
-        if (isObject(chartsConfig)) {
-          config.configure(chartsConfig);
-        } else if (typeof chartsConfig === 'function') {
-          chartsConfig(config);
-        } else if (!chartsConfig) {} else if (chartsConfig) {
-            logger.warn('chart configurations can be a function or an object not ' + chartsConfig);
-          }
-
-        if (libraries.length === 0) {
-          logger.warn('no aurelia-charts plugins installed. Head to the docs and read');
-        } else {
-          logger.debug('installed ' + libraries.join(' and ') + ' as aurelia-charts libraries');
-        }
-      }
-
-      _export('configure', configure);
 
       _export('qual', qual = 'qualitative');
 
@@ -77,12 +77,6 @@ System.register(['./config', 'aurelia-logging', './chart', './decorator/chart', 
       _export('qual', qual);
 
       _export('quan', quan);
-
-      function isObject(value) {
-        return (typeof value === 'undefined' ? 'undefined' : _typeof(value)) === 'object' && value !== null;
-      }
-
-      _export('isObject', isObject);
     }
   };
 });

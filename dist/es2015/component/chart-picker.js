@@ -62,6 +62,7 @@ export let ChartPicker = (_dec = inject(ChartConfig), _dec2 = bindable({ default
 
   dimensionsChanged(dimensions) {
     const scales = dimensions.map(dimension => dimension.scale);
+
     this.charts = this.chartConfig.chartsByScale(...scales);
     this.schema = [{
       key: 'chart',

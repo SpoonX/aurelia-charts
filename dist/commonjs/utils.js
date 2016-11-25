@@ -97,6 +97,7 @@ function groupBy(key, objects) {
 function reduceByX(columns) {
   return columns[0].reduce(function (acc, val, index) {
     var vals = row(index, columns);
+
     acc[val] = acc[val] ? acc[val].concat(vals) : vals;
 
     return acc;

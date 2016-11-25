@@ -16,11 +16,7 @@ define(['exports', 'aurelia-framework', '../dimensions', '../config'], function 
     });
   }
 
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
+  
 
   function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
     var desc = {};
@@ -59,7 +55,7 @@ define(['exports', 'aurelia-framework', '../dimensions', '../config'], function 
 
   var DimensionsPicker = exports.DimensionsPicker = (_dec = (0, _aureliaFramework.customElement)('dimensions-picker'), _dec2 = (0, _aureliaFramework.inject)(_aureliaFramework.BindingEngine, _config.Config), _dec3 = (0, _aureliaFramework.bindable)({ defaultBindingMode: _aureliaFramework.bindingMode.twoWay }), _dec(_class = _dec2(_class = (_class2 = function () {
     function DimensionsPicker(bindingEngine, config) {
-      _classCallCheck(this, DimensionsPicker);
+      
 
       _initDefineProp(this, 'object', _descriptor, this);
 

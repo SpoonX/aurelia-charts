@@ -5,11 +5,7 @@ System.register(['./aurelia-charts'], function (_export, _context) {
 
   var logger, Chart;
 
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
+  
 
   function warn(methodName) {
     logger.warn(methodName + ' method not defined for ' + this.library + '\'s type ' + this.type);
@@ -21,7 +17,7 @@ System.register(['./aurelia-charts'], function (_export, _context) {
     execute: function () {
       _export('Chart', Chart = function () {
         function Chart() {
-          _classCallCheck(this, Chart);
+          
 
           this.settings = {};
           this.dimensions = [];
@@ -32,7 +28,7 @@ System.register(['./aurelia-charts'], function (_export, _context) {
           warn('create');
         };
 
-        Chart.prototype.update = function update() {
+        Chart.prototype.update = function update(oldData, newData) {
           warn('update');
         };
 

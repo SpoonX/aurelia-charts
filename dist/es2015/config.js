@@ -68,7 +68,7 @@ export let Config = class Config {
       let library = this.charts[libName];
 
       if (typeof library === 'undefined') {
-        logger.warn(`${ value.library } is not a registered library. Either define a defalt library or tell what library to use`);
+        logger.warn(`${ value.library } is not a registered library. Either define a default library or tell what library to use`);
 
         return undefined;
       }

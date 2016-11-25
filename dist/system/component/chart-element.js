@@ -15,11 +15,7 @@ System.register(['aurelia-framework', '../config'], function (_export, _context)
     });
   }
 
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
+  
 
   function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
     var desc = {};
@@ -68,7 +64,7 @@ System.register(['aurelia-framework', '../config'], function (_export, _context)
     execute: function () {
       _export('ChartElement', ChartElement = (_dec = customElement('chart-element'), _dec2 = inject(BindingEngine, Element, Config, TaskQueue), _dec3 = bindable({ defaultBindingMode: bindingMode.twoWay }), _dec(_class = _dec2(_class = (_class2 = function () {
         function ChartElement(bindingEngine, element, config, queue) {
-          _classCallCheck(this, ChartElement);
+          
 
           _initDefineProp(this, 'type', _descriptor, this);
 
@@ -96,7 +92,7 @@ System.register(['aurelia-framework', '../config'], function (_export, _context)
         ChartElement.prototype.dimensionsChanged = function dimensionsChanged(dimensions) {
           if (this.instance) {
             this.instance.dimensions = this.dimensions;
-            this.instance.update();
+            this.instance.update(this.data, this.data);
           }
         };
 
@@ -105,6 +101,7 @@ System.register(['aurelia-framework', '../config'], function (_export, _context)
             return;
           }
           var Chart = this.chart;
+
           if (this.instance) {
             this.instance.destroy();
             delete this.instance;
@@ -117,10 +114,10 @@ System.register(['aurelia-framework', '../config'], function (_export, _context)
           this.queue.queueTask(this.instance.create.bind(this.instance));
         };
 
-        ChartElement.prototype.dataChanged = function dataChanged(data) {
+        ChartElement.prototype.dataChanged = function dataChanged(newData, oldData) {
           if (this.instance) {
             this.instance.data = this.data;
-            this.instance.update();
+            this.instance.update(newData, oldData);
           }
         };
 
@@ -134,6 +131,7 @@ System.register(['aurelia-framework', '../config'], function (_export, _context)
 
         ChartElement.prototype.updateChart = function updateChart() {
           var NewChart = this.config.chart({ type: this.type, library: this.library });
+
 
           if (NewChart !== this.chart) {
             this.chart = NewChart;

@@ -15,11 +15,7 @@ System.register(['../config', 'aurelia-framework'], function (_export, _context)
     });
   }
 
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
+  
 
   function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
     var desc = {};
@@ -65,7 +61,7 @@ System.register(['../config', 'aurelia-framework'], function (_export, _context)
     execute: function () {
       _export('ChartPicker', ChartPicker = (_dec = inject(ChartConfig), _dec2 = bindable({ defaultBindingMode: bindingMode.twoWay }), _dec(_class = (_class2 = function () {
         function ChartPicker(chartConfig) {
-          _classCallCheck(this, ChartPicker);
+          
 
           _initDefineProp(this, 'dimensions', _descriptor, this);
 
@@ -84,6 +80,7 @@ System.register(['../config', 'aurelia-framework'], function (_export, _context)
           var scales = dimensions.map(function (dimension) {
             return dimension.scale;
           });
+
           this.charts = (_chartConfig = this.chartConfig).chartsByScale.apply(_chartConfig, scales);
           this.schema = [{
             key: 'chart',

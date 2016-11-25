@@ -7,11 +7,11 @@ exports.Chart = undefined;
 
 var _aureliaCharts = require('./aurelia-charts');
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 
 var Chart = exports.Chart = function () {
   function Chart() {
-    _classCallCheck(this, Chart);
+    
 
     this.settings = {};
     this.dimensions = [];
@@ -22,7 +22,7 @@ var Chart = exports.Chart = function () {
     warn('create');
   };
 
-  Chart.prototype.update = function update() {
+  Chart.prototype.update = function update(oldData, newData) {
     warn('update');
   };
 

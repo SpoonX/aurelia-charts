@@ -13,13 +13,13 @@ export function configure(aurelia, chartsConfig) {
   let config = aurelia.container.get(Config);
   let libraries = Object.keys(config.charts);
 
-  if (isObject(chartsConfig)) {
+  if (typeof chartsConfig === 'object') {
     config.configure(chartsConfig);
   } else if (typeof chartsConfig === 'function') {
     chartsConfig(config);
-  } else if (!chartsConfig) {} else if (chartsConfig) {
-      logger.warn(`chart configurations can be a function or an object not ${ chartsConfig }`);
-    }
+  } else if (chartsConfig) {
+    logger.warn(`chart configurations can be a function or an object not a ${ typeof chartsConfig } value`);
+  }
 
   if (libraries.length === 0) {
     logger.warn('no aurelia-charts plugins installed. Head to the docs and read');
@@ -32,7 +32,3 @@ const qual = 'qualitative';
 const quan = 'quantitative';
 
 export { Config, logger, qual, quan };
-
-export function isObject(value) {
-  return typeof value === 'object' && value !== null;
-}

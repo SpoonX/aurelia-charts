@@ -75,7 +75,7 @@ export let ChartElement = (_dec = customElement('chart-element'), _dec2 = inject
   dimensionsChanged(dimensions) {
     if (this.instance) {
       this.instance.dimensions = this.dimensions;
-      this.instance.update();
+      this.instance.update(this.data, this.data);
     }
   }
 
@@ -84,6 +84,7 @@ export let ChartElement = (_dec = customElement('chart-element'), _dec2 = inject
       return;
     }
     let Chart = this.chart;
+
     if (this.instance) {
       this.instance.destroy();
       delete this.instance;
@@ -96,10 +97,10 @@ export let ChartElement = (_dec = customElement('chart-element'), _dec2 = inject
     this.queue.queueTask(this.instance.create.bind(this.instance));
   }
 
-  dataChanged(data) {
+  dataChanged(newData, oldData) {
     if (this.instance) {
       this.instance.data = this.data;
-      this.instance.update();
+      this.instance.update(newData, oldData);
     }
   }
 
@@ -113,6 +114,7 @@ export let ChartElement = (_dec = customElement('chart-element'), _dec2 = inject
 
   updateChart() {
     let NewChart = this.config.chart({ type: this.type, library: this.library });
+
 
     if (NewChart !== this.chart) {
       this.chart = NewChart;

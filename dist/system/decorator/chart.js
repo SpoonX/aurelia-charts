@@ -4,22 +4,22 @@ System.register(['../config.js', 'aurelia-dependency-injection'], function (_exp
   "use strict";
 
   var Config, Container;
+  function chart(namespace, type) {
+    var config = Container.instance.get(Config);
+
+    return function (target) {
+      config.registerChart(namespace, type, target);
+    };
+  }
+
+  _export('chart', chart);
+
   return {
     setters: [function (_configJs) {
       Config = _configJs.Config;
     }, function (_aureliaDependencyInjection) {
       Container = _aureliaDependencyInjection.Container;
     }],
-    execute: function () {
-      function chart(namespace, type) {
-        var config = Container.instance.get(Config);
-
-        return function (target) {
-          config.registerChart(namespace, type, target);
-        };
-      }
-
-      _export('chart', chart);
-    }
+    execute: function () {}
   };
 });
