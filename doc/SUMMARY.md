@@ -1,6 +1,6 @@
 # Summary
 
-* [Introduction](README.md)
+* [Introduction](readme.md)
 * [Installation](installation.md)
 * [Configuration](configuration.md)
 * [Usage](usage.md)
