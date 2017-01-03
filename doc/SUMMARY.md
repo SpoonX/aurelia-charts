@@ -10,3 +10,4 @@
 * [Libraries](libraries.md)
 * [Utils](utils.md)
 * [Changelog](CHANGELOG.md)
+* [License](license.md)
