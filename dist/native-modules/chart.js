@@ -1,8 +1,13 @@
+'use strict';
+
+exports.__esModule = true;
+exports.Chart = undefined;
+
+var _aureliaCharts = require('./aurelia-charts');
 
 
-import { logger } from './aurelia-charts';
 
-export var Chart = function () {
+var Chart = exports.Chart = function () {
   function Chart() {
     
 
@@ -27,5 +32,5 @@ export var Chart = function () {
 }();
 
 function warn(methodName) {
-  logger.warn(methodName + ' method not defined for ' + this.library + '\'s type ' + this.type);
+  _aureliaCharts.logger.warn(methodName + ' method not defined for ' + this.library + '\'s type ' + this.type);
 }

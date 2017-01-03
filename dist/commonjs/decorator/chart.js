@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.chart = chart;
 
-var _config = require('../config.js');
+var _config = require('../config');
 
 var _aureliaDependencyInjection = require('aurelia-dependency-injection');
 

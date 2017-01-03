@@ -1,12 +1,29 @@
-import { quan, qual } from './aurelia-charts';
+'use strict';
 
-export function typeScale(type) {
+exports.__esModule = true;
+exports.typeScale = typeScale;
+exports.typesScales = typesScales;
+exports.prop = prop;
+exports.unpack = unpack;
+exports.unpackProps = unpackProps;
+exports.unpackAll = unpackAll;
+exports.unpackAllGrouped = unpackAllGrouped;
+exports.mapValues = mapValues;
+exports.groupBy = groupBy;
+exports.reduceByX = reduceByX;
+exports.tail = tail;
+exports.row = row;
+exports.rows = rows;
+
+var _aureliaCharts = require('./aurelia-charts');
+
+function typeScale(type) {
   var quantativeTypes = ['date', 'date-time', 'number', 'integer', 'float', 'int'];
 
-  return quantativeTypes.indexOf(type) !== -1 ? quan : qual;
+  return quantativeTypes.indexOf(type) !== -1 ? _aureliaCharts.quan : _aureliaCharts.qual;
 }
 
-export function typesScales() {
+function typesScales() {
   for (var _len = arguments.length, types = Array(_len), _key = 0; _key < _len; _key++) {
     types[_key] = arguments[_key];
   }
@@ -14,17 +31,17 @@ export function typesScales() {
   return types.map(typeScale);
 }
 
-export function prop(key) {
+function prop(key) {
   return function value(obj) {
     return obj[key];
   };
 }
 
-export function unpack(key, data) {
+function unpack(key, data) {
   return data.map(prop(key));
 }
 
-export function unpackProps(keys, data) {
+function unpackProps(keys, data) {
   return keys.reduce(function (acc, key) {
     acc[key] = unpack(key, data);
 
@@ -32,11 +49,11 @@ export function unpackProps(keys, data) {
   }, {});
 }
 
-export function unpackAll(data) {
+function unpackAll(data) {
   return unpackProps(Object.keys(data[0]), data);
 }
 
-export function unpackAllGrouped(groups) {
+function unpackAllGrouped(groups) {
   return groups.map(function (group) {
     return {
       key: group.key,
@@ -45,7 +62,7 @@ export function unpackAllGrouped(groups) {
   });
 }
 
-export function mapValues(fn, object) {
+function mapValues(fn, object) {
   return Object.keys(object).reduce(function (acc, key) {
     acc[key] = fn(object[key]);
 
@@ -53,7 +70,7 @@ export function mapValues(fn, object) {
   }, {});
 }
 
-export function groupBy(key, objects) {
+function groupBy(key, objects) {
   var groupIndex = [];
   var index = void 0;
 
@@ -75,7 +92,7 @@ export function groupBy(key, objects) {
   }, []);
 }
 
-export function reduceByX(columns) {
+function reduceByX(columns) {
   return columns[0].reduce(function (acc, val, index) {
     var vals = row(index, columns);
 
@@ -85,17 +102,17 @@ export function reduceByX(columns) {
   }, {});
 }
 
-export function tail(list) {
+function tail(list) {
   return list.slice(1, Infinity);
 }
 
-export function row(index, columns) {
+function row(index, columns) {
   return columns.map(function (column) {
     return column[index];
   });
 }
 
-export function rows(columns) {
+function rows(columns) {
   return columns[0].map(function (field, index) {
     return row(index, columns);
   });

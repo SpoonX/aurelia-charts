@@ -1,3 +1,13 @@
+<a name="0.2.1"></a>
+## [0.2.1](https://github.com/SpoonX/aurelia-charts/compare/v0.2.0...v0.2.1) (2017-01-03)
+
+
+### Bug Fixes
+
+* **decorators:** fix paths by removing the .js ([270d4ae](https://github.com/SpoonX/aurelia-charts/commit/270d4ae))
+
+
+
 <a name="0.2.0"></a>
 # [0.2.0](https://github.com/SpoonX/aurelia-charts/compare/0.1.1...v0.2.0) (2016-11-25)
 

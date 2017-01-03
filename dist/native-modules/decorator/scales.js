@@ -1,12 +1,18 @@
-import { Config } from '../config.js';
-import { Container } from 'aurelia-dependency-injection';
+'use strict';
 
-export function scales() {
+exports.__esModule = true;
+exports.scales = scales;
+
+var _config = require('../config');
+
+var _aureliaDependencyInjection = require('aurelia-dependency-injection');
+
+function scales() {
   for (var _len = arguments.length, scaleTypes = Array(_len), _key = 0; _key < _len; _key++) {
     scaleTypes[_key] = arguments[_key];
   }
 
-  var config = Container.instance.get(Config);
+  var config = _aureliaDependencyInjection.Container.instance.get(_config.Config);
 
   return function (target) {
     config.registerScales.apply(config, [target].concat(scaleTypes));

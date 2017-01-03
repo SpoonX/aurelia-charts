@@ -1,4 +1,15 @@
+'use strict';
+
+exports.__esModule = true;
+exports.DimensionsPicker = undefined;
+
 var _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5;
+
+var _aureliaFramework = require('aurelia-framework');
+
+var _dimensions = require('../dimensions');
+
+var _config = require('../config');
 
 function _initDefineProp(target, property, descriptor, context) {
   if (!descriptor) return;
@@ -45,11 +56,7 @@ function _initializerWarningHelper(descriptor, context) {
   throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
 }
 
-import { BindingEngine, inject, bindingMode, bindable, customElement } from 'aurelia-framework';
-import { objectDimensions, entityDimensions } from '../dimensions';
-import { Config } from '../config';
-
-export var DimensionsPicker = (_dec = customElement('dimensions-picker'), _dec2 = inject(BindingEngine, Config), _dec3 = bindable({ defaultBindingMode: bindingMode.twoWay }), _dec(_class = _dec2(_class = (_class2 = function () {
+var DimensionsPicker = exports.DimensionsPicker = (_dec = (0, _aureliaFramework.customElement)('dimensions-picker'), _dec2 = (0, _aureliaFramework.inject)(_aureliaFramework.BindingEngine, _config.Config), _dec3 = (0, _aureliaFramework.bindable)({ defaultBindingMode: _aureliaFramework.bindingMode.twoWay }), _dec(_class = _dec2(_class = (_class2 = function () {
   function DimensionsPicker(bindingEngine, config) {
     
 
@@ -97,12 +104,12 @@ export var DimensionsPicker = (_dec = customElement('dimensions-picker'), _dec2 
   };
 
   DimensionsPicker.prototype.objectChanged = function objectChanged(object) {
-    this.selectableDimensions = objectDimensions(object);
+    this.selectableDimensions = (0, _dimensions.objectDimensions)(object);
     this.calculateSchema();
   };
 
   DimensionsPicker.prototype.entityChanged = function entityChanged(entity) {
-    this.selectableDimensions = entityDimensions(entity);
+    this.selectableDimensions = (0, _dimensions.entityDimensions)(entity);
     this.calculateSchema();
   };
 
@@ -117,16 +124,16 @@ export var DimensionsPicker = (_dec = customElement('dimensions-picker'), _dec2 
   };
 
   return DimensionsPicker;
-}(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'object', [bindable], {
+}(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'object', [_aureliaFramework.bindable], {
   enumerable: true,
   initializer: null
-}), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'entity', [bindable], {
+}), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'entity', [_aureliaFramework.bindable], {
   enumerable: true,
   initializer: null
-}), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'repository', [bindable], {
+}), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'repository', [_aureliaFramework.bindable], {
   enumerable: true,
   initializer: null
-}), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'selectedDimensions', [bindable], {
+}), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'selectedDimensions', [_aureliaFramework.bindable], {
   enumerable: true,
   initializer: function initializer() {
     return [];
@@ -137,6 +144,7 @@ export var DimensionsPicker = (_dec = customElement('dimensions-picker'), _dec2 
     return [];
   }
 })), _class2)) || _class) || _class);
+
 
 function schema() {
   var _this2 = this;

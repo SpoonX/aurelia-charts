@@ -1,4 +1,13 @@
+'use strict';
+
+exports.__esModule = true;
+exports.ChartElement = undefined;
+
 var _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6;
+
+var _aureliaFramework = require('aurelia-framework');
+
+var _config = require('../config');
 
 function _initDefineProp(target, property, descriptor, context) {
   if (!descriptor) return;
@@ -45,10 +54,7 @@ function _initializerWarningHelper(descriptor, context) {
   throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
 }
 
-import { TaskQueue, BindingEngine, bindingMode, inject, bindable, customElement } from 'aurelia-framework';
-import { Config } from '../config';
-
-export var ChartElement = (_dec = customElement('chart-element'), _dec2 = inject(BindingEngine, Element, Config, TaskQueue), _dec3 = bindable({ defaultBindingMode: bindingMode.twoWay }), _dec(_class = _dec2(_class = (_class2 = function () {
+var ChartElement = exports.ChartElement = (_dec = (0, _aureliaFramework.customElement)('chart-element'), _dec2 = (0, _aureliaFramework.inject)(_aureliaFramework.BindingEngine, Element, _config.Config, _aureliaFramework.TaskQueue), _dec3 = (0, _aureliaFramework.bindable)({ defaultBindingMode: _aureliaFramework.bindingMode.twoWay }), _dec(_class = _dec2(_class = (_class2 = function () {
   function ChartElement(bindingEngine, element, config, queue) {
     
 
@@ -129,19 +135,19 @@ export var ChartElement = (_dec = customElement('chart-element'), _dec2 = inject
   };
 
   return ChartElement;
-}(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'type', [bindable], {
+}(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'type', [_aureliaFramework.bindable], {
   enumerable: true,
   initializer: null
-}), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'library', [bindable], {
+}), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'library', [_aureliaFramework.bindable], {
   enumerable: true,
   initializer: null
-}), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'dimensions', [bindable], {
+}), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'dimensions', [_aureliaFramework.bindable], {
   enumerable: true,
   initializer: null
-}), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'data', [bindable], {
+}), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'data', [_aureliaFramework.bindable], {
   enumerable: true,
   initializer: null
-}), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, 'chart', [bindable], {
+}), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, 'chart', [_aureliaFramework.bindable], {
   enumerable: true,
   initializer: null
 }), _descriptor6 = _applyDecoratedDescriptor(_class2.prototype, 'instance', [_dec3], {

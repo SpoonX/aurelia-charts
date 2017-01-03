@@ -1,4 +1,13 @@
+'use strict';
+
+exports.__esModule = true;
+exports.ChartPicker = undefined;
+
 var _dec, _dec2, _class, _desc, _value, _class2, _descriptor, _descriptor2;
+
+var _config = require('../config');
+
+var _aureliaFramework = require('aurelia-framework');
 
 function _initDefineProp(target, property, descriptor, context) {
   if (!descriptor) return;
@@ -45,10 +54,7 @@ function _initializerWarningHelper(descriptor, context) {
   throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
 }
 
-import { Config as ChartConfig } from '../config';
-import { bindingMode, bindable, inject } from 'aurelia-framework';
-
-export var ChartPicker = (_dec = inject(ChartConfig), _dec2 = bindable({ defaultBindingMode: bindingMode.twoWay }), _dec(_class = (_class2 = function () {
+var ChartPicker = exports.ChartPicker = (_dec = (0, _aureliaFramework.inject)(_config.Config), _dec2 = (0, _aureliaFramework.bindable)({ defaultBindingMode: _aureliaFramework.bindingMode.twoWay }), _dec(_class = (_class2 = function () {
   function ChartPicker(chartConfig) {
     
 
@@ -84,7 +90,7 @@ export var ChartPicker = (_dec = inject(ChartConfig), _dec2 = bindable({ default
   };
 
   return ChartPicker;
-}(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'dimensions', [bindable], {
+}(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'dimensions', [_aureliaFramework.bindable], {
   enumerable: true,
   initializer: null
 }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'chart', [_dec2], {

@@ -1,4 +1,4 @@
-define(['exports', '../config.js', 'aurelia-dependency-injection'], function (exports, _config, _aureliaDependencyInjection) {
+define(['exports', '../config', 'aurelia-dependency-injection'], function (exports, _config, _aureliaDependencyInjection) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {

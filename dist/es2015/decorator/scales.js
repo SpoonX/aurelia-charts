@@ -1,4 +1,4 @@
-import { Config } from '../config.js';
+import { Config } from '../config';
 import { Container } from 'aurelia-dependency-injection';
 
 export function scales(...scaleTypes) {

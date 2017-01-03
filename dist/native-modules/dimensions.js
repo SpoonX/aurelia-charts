@@ -1,7 +1,18 @@
-import { typeScale, prop } from './aurelia-charts';
-import typer from 'typer';
+'use strict';
 
-export function entityDimensions(entity) {
+exports.__esModule = true;
+exports.entityDimensions = entityDimensions;
+exports.objectDimensions = objectDimensions;
+
+var _aureliaCharts = require('./aurelia-charts');
+
+var _typer = require('typer');
+
+var _typer2 = _interopRequireDefault(_typer);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function entityDimensions(entity) {
   var metadata = entity.getMeta();
   var types = metadata.fetch('types') || {};
 
@@ -10,20 +21,20 @@ export function entityDimensions(entity) {
       label: function label(datum) {
         return datum ? '' + datum.key + key : '' + key;
       },
-      data: prop(key),
-      scale: typeScale(types[key])
+      data: (0, _aureliaCharts.prop)(key),
+      scale: (0, _aureliaCharts.typeScale)(types[key])
     };
   });
 }
 
-export function objectDimensions(object) {
+function objectDimensions(object) {
   return Object.keys(object).map(function (key) {
     return {
       label: function label(datum) {
         return datum ? '' + datum.key + key : '' + key;
       },
-      data: prop(key),
-      scale: typeScale(typer.detect(object[key]))
+      data: (0, _aureliaCharts.prop)(key),
+      scale: (0, _aureliaCharts.typeScale)(_typer2.default.detect(object[key]))
     };
   });
 }

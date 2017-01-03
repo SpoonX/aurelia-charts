@@ -1,8 +1,14 @@
-import { Config } from '../config.js';
-import { Container } from 'aurelia-dependency-injection';
+'use strict';
 
-export function chart(namespace, type) {
-  var config = Container.instance.get(Config);
+exports.__esModule = true;
+exports.chart = chart;
+
+var _config = require('../config');
+
+var _aureliaDependencyInjection = require('aurelia-dependency-injection');
+
+function chart(namespace, type) {
+  var config = _aureliaDependencyInjection.Container.instance.get(_config.Config);
 
   return function (target) {
     config.registerChart(namespace, type, target);

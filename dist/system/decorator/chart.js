@@ -1,6 +1,6 @@
 'use strict';
 
-System.register(['../config.js', 'aurelia-dependency-injection'], function (_export, _context) {
+System.register(['../config', 'aurelia-dependency-injection'], function (_export, _context) {
   "use strict";
 
   var Config, Container;
@@ -15,8 +15,8 @@ System.register(['../config.js', 'aurelia-dependency-injection'], function (_exp
   _export('chart', chart);
 
   return {
-    setters: [function (_configJs) {
-      Config = _configJs.Config;
+    setters: [function (_config) {
+      Config = _config.Config;
     }, function (_aureliaDependencyInjection) {
       Container = _aureliaDependencyInjection.Container;
     }],

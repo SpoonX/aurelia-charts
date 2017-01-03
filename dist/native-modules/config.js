@@ -1,12 +1,25 @@
+'use strict';
+
+exports.__esModule = true;
+exports.Config = undefined;
+
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
+var _arrayEqual = require('array-equal');
+
+var _arrayEqual2 = _interopRequireDefault(_arrayEqual);
+
+var _extend = require('extend');
+
+var _extend2 = _interopRequireDefault(_extend);
+
+var _aureliaCharts = require('./aurelia-charts');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 
-import arrayEquals from 'array-equal';
-import extend from 'extend';
-import { logger } from './aurelia-charts';
 
-export var Config = function () {
+var Config = exports.Config = function () {
   function Config() {
     
 
@@ -41,7 +54,7 @@ export var Config = function () {
   };
 
   Config.prototype.configure = function configure(config) {
-    extend(true, this, config);
+    (0, _extend2.default)(true, this, config);
 
     return this;
   };
@@ -55,7 +68,7 @@ export var Config = function () {
 
     this.scales.forEach(function (chartScales) {
       chartScales.scales.forEach(function (chartScale) {
-        if (arrayEquals(scale, chartScale)) {
+        if ((0, _arrayEqual2.default)(scale, chartScale)) {
           result.push(chartScales.constructor);
         }
       });
@@ -82,7 +95,7 @@ export var Config = function () {
       var library = this.charts[libName];
 
       if (typeof library === 'undefined') {
-        logger.warn(value.library + ' is not a registered library. Either define a default library or tell what library to use');
+        _aureliaCharts.logger.warn(value.library + ' is not a registered library. Either define a default library or tell what library to use');
 
         return undefined;
       }
