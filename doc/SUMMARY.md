@@ -1,6 +1,6 @@
 # Summary
 
-* [Introduction](README.md)
+* [Introduction](readme.md)
 * [Installation](installation.md)
 * [Configuration](configuration.md)
 * [Usage](usage.md)
@@ -10,4 +10,3 @@
 * [Libraries](libraries.md)
 * [Utils](utils.md)
 * [Changelog](CHANGELOG.md)
-* [License](license.md)
