@@ -42,10 +42,10 @@
     },
     "dependencies": {
       "array-equal": "^1.0.0",
-      "aurelia-dependency-injection": "^1.0.0",
-      "aurelia-form": "^0.3.0",
-      "aurelia-framework": "^1.0.1",
-      "aurelia-logging": "^1.0.0",
+      "aurelia-dependency-injection": "^1.3.0",
+      "aurelia-form": "^0.4.0",
+      "aurelia-framework": "^1.0.8",
+      "aurelia-logging": "^1.2.0",
       "extend": "^3.0.0",
       "typer": "^1.1.0"
     },
@@ -55,10 +55,10 @@
     "jspmPackage": true,
     "peerDependencies": {
       "array-equal": "^1.0.0",
-      "aurelia-dependency-injection": "^1.0.0",
-      "aurelia-form": "^0.3.0",
-      "aurelia-framework": "^1.0.1",
-      "aurelia-logging": "^1.0.0",
+      "aurelia-dependency-injection": "^1.3.0",
+      "aurelia-form": "^0.4.0",
+      "aurelia-framework": "^1.0.8",
+      "aurelia-logging": "^1.2.0",
       "extend": "^3.0.0",
       "typer": "^1.1.0"
     }
