@@ -1,6 +1,6 @@
 import {getLogger} from 'aurelia-logging';
-import {TaskQueue,BindingEngine,bindingMode,inject,bindable,customElement} from 'aurelia-framework';
 import {Container} from 'aurelia-dependency-injection';
+import {TaskQueue,BindingEngine,bindingMode,inject,bindable,customElement} from 'aurelia-framework';
 
 export declare {
   Chart
@@ -240,6 +240,8 @@ export declare function row(index?: any, columns?: any): any;
  * @returns {array[]}
  */
 export declare function rows(columns?: any): any;
+export declare function chart(namespace?: any, type?: any): any;
+export declare function scales(...scaleTypes: any[]): any;
 export declare class ChartElement {
   type: any;
   library: any;
@@ -257,31 +259,3 @@ export declare class ChartElement {
   updateChart(): any;
   detached(): any;
 }
-export declare class ChartPicker {
-  dimensions: any;
-  chart: any;
-  schema: any;
-  
-  /* charts that are available for the given dimensions */
-  charts: any;
-  constructor(chartConfig?: any);
-  dimensionsChanged(dimensions?: any): any;
-}
-export declare class DimensionsPicker {
-  object: any;
-  entity: any;
-  repository: any;
-  selectedDimensions: any;
-  dimensions: any;
-  schema: any;
-  selectableDimensions: any;
-  constructor(bindingEngine?: any, config?: any);
-  calculateSchema(): any;
-  dimensionsChanged(): any;
-  selectedDimensionsChanged(): any;
-  objectChanged(object?: any): any;
-  entityChanged(entity?: any): any;
-  maxDimensions(): any;
-}
-export declare function chart(namespace?: any, type?: any): any;
-export declare function scales(...scaleTypes: any[]): any;

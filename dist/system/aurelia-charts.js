@@ -6,7 +6,7 @@ System.register(['./config', 'aurelia-logging', './chart', './decorator/chart', 
   var Config, getLogger, _typeof, logger, qual, quan;
 
   function configure(aurelia, chartsConfig) {
-    aurelia.globalResources('./component/chart-element', './component/dimensions-picker', './component/chart-picker');
+    aurelia.globalResources('./component/chart-element');
 
     var config = aurelia.container.get(Config);
     var libraries = Object.keys(config.charts);

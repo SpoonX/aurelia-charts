@@ -43,7 +43,7 @@ define(['exports', './chart', './decorator/chart', './decorator/scales', './util
   var logger = (0, _aureliaLogging.getLogger)('aurelia-charts');
 
   function configure(aurelia, chartsConfig) {
-    aurelia.globalResources('./component/chart-element', './component/dimensions-picker', './component/chart-picker');
+    aurelia.globalResources('./component/chart-element');
 
     var config = aurelia.container.get(_config.Config);
     var libraries = Object.keys(config.charts);

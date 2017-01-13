@@ -8,7 +8,7 @@ export * from './utils';
 const logger = getLogger('aurelia-charts');
 
 export function configure(aurelia, chartsConfig) {
-  aurelia.globalResources('./component/chart-element', './component/dimensions-picker', './component/chart-picker');
+  aurelia.globalResources('./component/chart-element');
 
   let config = aurelia.container.get(Config);
   let libraries = Object.keys(config.charts);
