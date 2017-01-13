@@ -10,8 +10,6 @@ const logger = getLogger('aurelia-charts');
 export function configure(aurelia, chartsConfig) {
   aurelia.globalResources(
     './component/chart-element',
-    './component/dimensions-picker',
-    './component/chart-picker'
   );
 
   let config    = aurelia.container.get(Config);
