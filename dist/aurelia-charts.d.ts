@@ -63,21 +63,21 @@ export declare class Config {
   scales: any;
   
   /**
-     * @param {string} library
-     * @param {string} type
-     * @param {Function} constructor of a chart
+     * @param {string}   library
+     * @param {string}   type
+     * @param {Function} target constructor of a chart
      *
-     * @chainable
+     * @returns {Config}
      */
   registerChart(library?: any, type?: any, target?: any): any;
   
   /**
      * registers valid scales for a chart
      *
-     * @param {Function} chart constructor
-     * @param {...string[]} scales
+     * @param {Function}    target constructor
+     * @param {...string} scales
      *
-     * @chainable
+     * @returns {Config}
      */
   registerScales(target?: any, ...scales: any[]): any;
   
@@ -86,9 +86,9 @@ export declare class Config {
      *
      * @param {object} defaults
      *
-     * @chainable
+     * @returns {Config}
      */
-  configure(config?: any): any;
+  configure(defaults?: any): any;
   
   /**
      * Returns multiple scales
@@ -154,7 +154,7 @@ export declare function typesScales(...types: any[]): any;
 /**
  * returns a function which gets the property passed as a the prop param
  *
- * @param prop
+ * @param {string} key
  *
  * @returns {Function}
  */
@@ -163,6 +163,11 @@ export declare function prop(key?: any): any;
 /**
  * takes a list of data and returns a list of the values of one of the
  * properties on the array.
+ *
+ * @param {string} key
+ * @param {*[]}    data
+ *
+ * @returns {*[]}
  */
 export declare function unpack(key?: any, data?: any): any;
 
@@ -181,7 +186,7 @@ export declare function unpackProps(keys?: any, data?: any): any;
  * returns an object where the objects are transformed to a single object which
  * values are a list of all the objects their values.
  *
- * @param {Object[]}
+ * @param {Object[]} data
  *
  * @return {Object}
  */
@@ -190,14 +195,18 @@ export declare function unpackAll(data?: any): any;
 /**
  * used to unpack a grouped objects
  *
- * @param {object} groups
+ * @param {object[]} groups
  *
- * @returns
+ * @returns {object[]}
  */
 export declare function unpackAllGrouped(groups?: any): any;
 
 /**
  * @todo: consider removing this function
+ * @param {function} fn
+ * @param {object}   object
+ *
+ * @returns {*[]}
  */
 export declare function mapValues(fn?: any, object?: any): any;
 
@@ -205,9 +214,9 @@ export declare function mapValues(fn?: any, object?: any): any;
  * returns a list of grouped data
  *
  * @param {string} key
- * @param {object} an object with arrays as properties
+ * @param {object[]} objects an object with arrays as properties
  *
- * @retursn {array{}}
+ * @returns {*[]}
  */
 export declare function groupBy(key?: any, objects?: any): any;
 export declare function reduceByX(columns?: any): any;

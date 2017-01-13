@@ -58,8 +58,8 @@ define(['exports', 'array-equal', 'extend', './aurelia-charts'], function (expor
       return this;
     };
 
-    Config.prototype.configure = function configure(config) {
-      (0, _extend2.default)(true, this, config);
+    Config.prototype.configure = function configure(defaults) {
+      (0, _extend2.default)(true, this, defaults);
 
       return this;
     };

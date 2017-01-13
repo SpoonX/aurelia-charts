@@ -56,8 +56,8 @@ System.register(['array-equal', 'extend', './aurelia-charts'], function (_export
           return this;
         };
 
-        Config.prototype.configure = function configure(config) {
-          extend(true, this, config);
+        Config.prototype.configure = function configure(defaults) {
+          extend(true, this, defaults);
 
           return this;
         };

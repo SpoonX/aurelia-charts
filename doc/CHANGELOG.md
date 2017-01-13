@@ -1,3 +1,13 @@
+<a name="0.2.2"></a>
+## [0.2.2](https://github.com/SpoonX/aurelia-charts/compare/v0.2.1...v0.2.2) (2017-01-13)
+
+
+### Bug Fixes
+
+* **project:** add missing dependencies ([2d46371](https://github.com/SpoonX/aurelia-charts/commit/2d46371))
+
+
+
 <a name="0.2.1"></a>
 ## [0.2.1](https://github.com/SpoonX/aurelia-charts/compare/v0.2.0...v0.2.1) (2017-01-03)
 

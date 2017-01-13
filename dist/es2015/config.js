@@ -30,8 +30,8 @@ export let Config = class Config {
     return this;
   }
 
-  configure(config) {
-    extend(true, this, config);
+  configure(defaults) {
+    extend(true, this, defaults);
 
     return this;
   }

@@ -55,8 +55,8 @@ var Config = exports.Config = function () {
     return this;
   };
 
-  Config.prototype.configure = function configure(config) {
-    (0, _extend2.default)(true, this, config);
+  Config.prototype.configure = function configure(defaults) {
+    (0, _extend2.default)(true, this, defaults);
 
     return this;
   };

@@ -21,11 +21,11 @@ export class Config {
   scales = [];
 
   /**
-   * @param {string} library
-   * @param {string} type
-   * @param {Function} constructor of a chart
+   * @param {string}   library
+   * @param {string}   type
+   * @param {Function} target constructor of a chart
    *
-   * @chainable
+   * @returns {Config}
    */
   registerChart(library, type, target) {
     this.charts[library] = this.charts[library] || {};
@@ -38,10 +38,10 @@ export class Config {
   /**
    * registers valid scales for a chart
    *
-   * @param {Function} chart constructor
-   * @param {...string[]} scales
+   * @param {Function}    target constructor
+   * @param {...string} scales
    *
-   * @chainable
+   * @returns {Config}
    */
   registerScales(target, ...scales) {
     this.scales.push({
@@ -57,10 +57,10 @@ export class Config {
    *
    * @param {object} defaults
    *
-   * @chainable
+   * @returns {Config}
    */
-  configure(config) {
-    extend(true, this, config);
+  configure(defaults) {
+    extend(true, this, defaults);
 
     return this;
   }
