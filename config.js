@@ -12,6 +12,7 @@ System.config({
     "aurelia-form": "npm:aurelia-form@0.4.0",
     "aurelia-framework": "npm:aurelia-framework@1.0.8",
     "aurelia-logging": "npm:aurelia-logging@1.2.0",
+    "aurelia-pal": "npm:aurelia-pal@1.2.0",
     "aurelia-polyfills": "npm:aurelia-polyfills@1.1.1",
     "extend": "npm:extend@3.0.0",
     "typer": "npm:typer@1.1.0",
