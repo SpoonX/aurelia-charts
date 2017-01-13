@@ -41,7 +41,7 @@ export function typesScales(...types) {
 /**
  * returns a function which gets the property passed as a the prop param
  *
- * @param prop
+ * @param {string} key
  *
  * @returns {Function}
  */
@@ -59,6 +59,11 @@ export function prop(key) {
 /**
  * takes a list of data and returns a list of the values of one of the
  * properties on the array.
+ *
+ * @param {string} key
+ * @param {*[]}    data
+ *
+ * @returns {*[]}
  */
 export function unpack(key, data) {
   return data.map(prop(key));
@@ -85,7 +90,7 @@ export function unpackProps(keys, data) {
  * returns an object where the objects are transformed to a single object which
  * values are a list of all the objects their values.
  *
- * @param {Object[]}
+ * @param {Object[]} data
  *
  * @return {Object}
  */
@@ -96,9 +101,9 @@ export function unpackAll(data) {
 /**
  * used to unpack a grouped objects
  *
- * @param {object} groups
+ * @param {object[]} groups
  *
- * @returns
+ * @returns {object[]}
  */
 export function unpackAllGrouped(groups) {
   return groups.map(group => {
@@ -111,6 +116,10 @@ export function unpackAllGrouped(groups) {
 
 /**
  * @todo: consider removing this function
+ * @param {function} fn
+ * @param {object}   object
+ *
+ * @returns {*[]}
  */
 export function mapValues(fn, object) {
   return Object.keys(object).reduce((acc, key) => {
@@ -124,9 +133,9 @@ export function mapValues(fn, object) {
  * returns a list of grouped data
  *
  * @param {string} key
- * @param {object} an object with arrays as properties
+ * @param {object[]} objects an object with arrays as properties
  *
- * @retursn {array{}}
+ * @returns {*[]}
  */
 export function groupBy(key, objects) {
   let groupIndex = [];
