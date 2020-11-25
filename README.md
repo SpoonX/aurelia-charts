@@ -1,3 +1,11 @@
+# Archived
+
+It was fun while it lasted, but we have to stop maintaining these repositories. We haven't used these projects for quite some time and maintaining them is becoming harder to do.
+
+You deserve better, and for that reason we've decided to archive some repositories, which includes this one.
+
+Feel free to fork and alter the repositories, and go forth making awesome stuff.
+
 # ![aurelia-charts](https://cloud.githubusercontent.com/assets/67802/19197297/50f1d8a2-8cb9-11e6-980a-d342be79a502.png)
 
 A standardized way of leveraging multiple frameworks.
